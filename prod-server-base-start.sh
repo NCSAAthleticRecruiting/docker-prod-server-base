@@ -22,4 +22,4 @@
 # END LOCAL ONLY
 
 # Start memcache
-/usr/bin/memcached -u memcache -v &
+/usr/bin/memcached -u memcache -v & service memcached start &

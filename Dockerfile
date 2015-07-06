@@ -6,9 +6,10 @@
 FROM kricker/server-base:latest
 
 #PHP Config
-COPY config/php/php.ini /etc/php5/apache2/php.ini
+COPY config/php/php.ini /etc/php5/apache2/
 
 #Install Varnish & memcached
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -qy varnish memcached 
 
 # Install Apache Solr
@@ -37,6 +38,8 @@ RUN sed -i 's/VirtualHost \*:80/VirtualHost \*:8088/g' /etc/apache2/sites-availa
 # RUN useradd -rm ruby_dev -u 1000 -g 50
 # don't add source code, going to mount it
 # ADD . /srv/www/siteroot
+RUN mda=/srv/www/siteroot;
+RUN if ! [ -L $mda ]; then ln -s /data /srv/www/siteroot; fi 
 
 # Add configuration volumes for solr and varnish
 VOLUME ["/usr/share/solr"]
