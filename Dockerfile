@@ -52,6 +52,6 @@ COPY prod-server-base-start.sh /root/prod-server-base-start.sh
 #RUN chmod 777 /root/varnish-start.sh
 
 # Define default command.
-CMD sh /root/server-base-start.sh && /sbin/my_init
+CMD sh /root/server-base-start.sh & /sbin/my_init
 
 EXPOSE 80 8080 8088 3306 443 11211
