@@ -46,7 +46,7 @@ RUN if ! [ -L $mda ]; then ln -s /data /srv/www/siteroot; fi
 #VOLUME ["/var/lib/varnish"]
 #VOLUME ["/etc/varnish"]
 
-COPY prod-server-base-start.sh /root/prod-server-base-start.sh
+#COPY prod-server-base-start.sh /root/prod-server-base-start.sh
 #COPY config/varnish/start.sh /root/varnish-start.sh
 #RUN chmod 777 /root/prod-server-base-start.sh
 #RUN chmod 777 /root/varnish-start.sh
