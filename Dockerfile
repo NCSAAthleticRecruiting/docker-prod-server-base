@@ -46,12 +46,12 @@ RUN if ! [ -L $mda ]; then ln -s /data /srv/www/siteroot; fi
 #VOLUME ["/var/lib/varnish"]
 #VOLUME ["/etc/varnish"]
 
-#COPY prod-server-base-start.sh /root/prod-server-base-start.sh
+COPY prod-server-base-start.sh /root/prod-server-base-start.sh
 #COPY config/varnish/start.sh /root/varnish-start.sh
 #RUN chmod 777 /root/prod-server-base-start.sh
 #RUN chmod 777 /root/varnish-start.sh
 
 # Define default command.
-#CMD sh /root/server-base-start.sh && sh /root/prod-server-base-start.sh && sh /root/varnish-start.sh & /sbin/my_init
+CMD sh /root/server-base-start.sh && /sbin/my_init
 
 EXPOSE 80 8080 8088 3306 443 11211
